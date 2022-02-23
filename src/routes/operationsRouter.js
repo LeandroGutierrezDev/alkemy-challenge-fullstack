@@ -9,7 +9,5 @@ router.get('/:id', operationsController.operation)
 router.put('/edit/:id', operationsController.edit);
 router.delete('/:id', operationsController.delete);
 
-// router.post('/update', operationsController.create);
-
 
 module.exports = router;

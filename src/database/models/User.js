@@ -5,7 +5,8 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(11).UNSIGNED,
             primaryKey: true,
             allowNull: false,
-            autoIncrement: true
+            autoIncrement: true,
+            unique: true
         },
         // created_at: dataTypes.TIMESTAMP,
         // updated_at: dataTypes.TIMESTAMP,

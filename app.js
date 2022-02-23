@@ -13,10 +13,11 @@ app.use(express.urlencoded({ extended: false }));
 
 //Aquí llamo a la ruta de las api de movies
 const operationsRouter = require('./src/routes/operationsRouter')
-
+const userRouter = require('./src/routes/userRouter')
 //app.use(operationsRouter);
 
 app.use('/api/operations', operationsRouter);
+app.use('/api/users', userRouter);
 
 
 
