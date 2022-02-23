@@ -4,7 +4,10 @@ const operationsController = require('../controllers/operationsControllers')
 
 //Rutas para los últimos 10 registros
 router.get('/', operationsController.home);
-router.get('/create', operationsController.create);
+router.post('/newOperation', operationsController.create);
+router.get('/:id', operationsController.operation)
+router.put('/edit/:id', operationsController.edit);
+router.delete('/:id', operationsController.delete);
 
 // router.post('/update', operationsController.create);
 

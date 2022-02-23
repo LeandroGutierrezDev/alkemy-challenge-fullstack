@@ -7,9 +7,9 @@ const Operations = db.Operation;
 const operationsController = {
     'home': (req, res) => {
         Operations.findAll(
-            {
-                include: ['users']
-            }
+            // {
+            //     include: ['users']
+            // }
         )
         .then(operations => {
             let respuesta = {
@@ -25,8 +25,68 @@ const operationsController = {
         .catch(error => res.send(error))
     },
     create: (req, res) => {
-        Operations.create()
-    }
-}
+        // let operation = {
+        //     type: req.body.type,
+        //     concept: req.body.concept,
+        //     amount: req.body.amount,
+        //     date: req.body.date
+        // }
+        Operations.create(req.body)
+        .then(operation => {
+            let respuesta = {
+                meta: {
+                    status : 200,
+                   },
+                data: operation
+            }
+                res.json(respuesta);
+            })
+        .catch(error => res.send(error));
+    },
+    operation: (req, res) => {
+        Operations.findByPk(req.params.id)
+        .then(operation => {
+            let respuesta = {
+                meta: {
+                    status : 200,
+                   },
+                data: operation
+            }
+                res.json(respuesta);
+            })
+        .catch(error => res.send(error));
+    },
+    edit: (req, res) =>{
+        Operations.update({...req.body},{
+            where: {id: req.params.id}
+        })
+        .then(operation =>{
+            let respuesta = {
+                meta: {
+                    status : 200,
+                   },
+                data: operation
+            }
+                res.json(respuesta);            
+        })
+        .catch(error => res.send(error));
+
+
+    },
+    delete: (req, res) =>(
+      Operations.destroy({
+        where: { id: req.params.id }
+    })
+      .then(operation => {
+        let respuesta = {
+            meta: {
+                status : 200,
+               },
+            data: operation
+        }
+            res.json(respuesta);
+        })
+    .catch(error => res.send(error))
+    )}
 
 module.exports = operationsController;
