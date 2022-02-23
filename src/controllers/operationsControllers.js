@@ -23,9 +23,10 @@ const operationsController = {
                 res.json(respuesta);
             })
         .catch(error => res.send(error))
+    },
+    create: (req, res) => {
+        Operations.create()
     }
-
-
 }
 
 module.exports = operationsController;
